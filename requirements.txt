@@ -1,1 +1,3 @@
-xlxswriter
+streamlit
+pandas
+numpy

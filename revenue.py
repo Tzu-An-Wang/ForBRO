@@ -3,7 +3,6 @@ import numpy as np
 
 import streamlit as st
 from io import BytesIO
-import xlsxwriter
 
 # set title
 st.title('POS 轉 Excel')
