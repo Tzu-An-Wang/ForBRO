@@ -16,6 +16,7 @@ if uploaded_file is not None:
     final_Sheet1["累積營收/現金"] = final_Sheet1["營業額"].cumsum()
     final_Sheet1["備註"] = ""
     final_Sheet1["時間"] = pd.to_datetime(final_Sheet1["時間"])
+    final_Sheet1 = final_Sheet1.sort_values(by="時間", ascending=True)
     final_Sheet1["時間"] = final_Sheet1["時間"].dt.strftime('%Y/%-m/%-d')
 
     
