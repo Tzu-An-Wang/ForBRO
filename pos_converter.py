@@ -10,12 +10,12 @@ def run_pos_converter():
     if uploaded_file is not None:
         excel = pd.ExcelFile(uploaded_file)
         df1 = pd.read_excel(uploaded_file, sheet_name="Sheet1")
-        final_Sheet1 = df1[df1["Unnamed: 1"] == "小結"][["時間", "營業額"]]
-        final_Sheet1["備註"] = ""
-        final_Sheet1["時間"] = pd.to_datetime(final_Sheet1["時間"])
+        final_Sheet1 = df1[df1["Unnamed: 1"] == "小結"].iloc[:, [2, 3]]
+        final_Sheet1["時間"] = pd.to_datetime(final_Sheet1.iloc[:, 0])
         final_Sheet1 = final_Sheet1.sort_values(by="時間", ascending=True)
         final_Sheet1["時間"] = final_Sheet1["時間"].dt.strftime('%Y/%-m/%-d')
-        final_Sheet1["累積營收/現金"] = final_Sheet1["營業額"].cumsum()
+        final_Sheet1["累積營收/現金"] = final_Sheet1.iloc[:, 1].cumsum()
+        final_Sheet1["備註"] = ""
 
         col1, col2 = st.columns(2)
 
