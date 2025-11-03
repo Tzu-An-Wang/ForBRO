@@ -8,6 +8,7 @@ from firestore_auth import (login_form, logout, is_authenticated,
                            show_all_users, create_user, verify_wheat_code,
                            show_password_change_form)
 from utils import initialize_firestore
+from tutorial import show_tutorial
 
 def main():
     """Main application entry point with authentication and password change"""
@@ -54,6 +55,7 @@ def main():
     
     # Options for the sidebar - all users have access to all business functions
     options = [
+        "📚 使用教學",
         "POS 轉 Excel", 
         "員工工時計算", 
         "員工管理"
@@ -173,7 +175,9 @@ def main():
     
     # Run the selected function - all users have access to all business functions
     try:
-        if selected_function == "POS 轉 Excel":
+        if selected_function == "📚 使用教學":
+            show_tutorial()
+        elif selected_function == "POS 轉 Excel":
             run_pos_converter()
         elif selected_function == "員工工時計算":
             run_salary_calculator()  # This calls your payroll calculator
